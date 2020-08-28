@@ -25,7 +25,7 @@ QUERY = """SELECT
     *
     FROM lots
     where {} = ?
-    ORDER BY id ASC
+    ORDER BY Parcel ASC
     LIMIT 1;
 """
 
@@ -48,7 +48,7 @@ class EveryLot(object):
         self.logger = kwargs.get('logger', logging.getLogger('everylot'))
 
         # set address format for fetching from DB
-        self.search_format = search_format or '{address}, {city} {state}'
+        self.search_format = search_format or '{address}, Madison, WI'
         self.print_format = print_format or '{address}'
 
         self.logger.debug('searching google sv with %s', self.search_format)
