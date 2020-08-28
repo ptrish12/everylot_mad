@@ -18,3 +18,7 @@ dist
 *.dbf
 *.shp.xml
 
+bots.yaml
+notes.md
+
+.idea/
