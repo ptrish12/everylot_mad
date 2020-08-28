@@ -57,7 +57,7 @@ class EveryLot(object):
         self.conn = sqlite3.connect(database)
 
         if id_:
-            field = 'id'
+            field = 'Parcel'
             value = id_
         else:
             field = 'tweeted'
@@ -120,12 +120,12 @@ class EveryLot(object):
         Check if google-geocoded address is nearby or not. if not, use the lat/lon
         '''
         # skip this step if there's no address, we'll just use the lat/lon to fetch the SV.
-        try:
-            address = self.search_format.format(**self.lot)
 
-        except KeyError:
-            self.logger.warn('Could not find street address, using lat/lon')
-            return '{},{}'.format(self.lot['lat'], self.lot['lon'])
+        address = self.search_format.format(**self.lot)
+
+        # except KeyError:
+        #     self.logger.warn('Could not find street address, using lat/lon')
+        #     return '{},{}'.format(self.lot['lat'], self.lot['lon'])
 
         # bounds in (miny minx maxy maxx) aka (s w n e)
         try:
@@ -184,11 +184,11 @@ class EveryLot(object):
 
         return {
             "status": status,
-            "lat": self.lot.get('lat', 0.),
-            "long": self.lot.get('lon', 0.),
+            # "lat": self.lot.get('lat', 0.),
+            # "long": self.lot.get('lon', 0.),
             "media_ids": [media_id_string]
         }
 
     def mark_as_tweeted(self, status_id):
-        self.conn.execute("UPDATE lots SET tweeted = ? WHERE id = ?", (status_id, self.lot['id'],))
+        self.conn.execute("UPDATE lots SET tweeted = ? WHERE Parcel = ?", (status_id, self.lot['Parcel'],))
         self.conn.commit()

@@ -25,7 +25,7 @@ def main():
     parser = argparse.ArgumentParser(description='every lot twitter bot')
     parser.add_argument('screen_name', metavar='SCREEN_NAME', type=str, help='Twitter screen name (without @)')
     parser.add_argument('database', metavar='DATABASE', type=str, help='path to SQLite lots database')
-    parser.add_argument('--id', type=str, default=None, help='tweet the entry in the lots table with this id')
+    parser.add_argument('--Parcel', type=str, default=None, help='tweet the entry in the lots table with this id')
     parser.add_argument('-s', '--search-format', type=str, default=None, metavar='STRING',
                         help='Python format string use for searching Google')
     parser.add_argument('-p', '--print-format', type=str, default=None, metavar='STRING',
@@ -42,7 +42,7 @@ def main():
                   logger=logger,
                   print_format=args.print_format,
                   search_format=args.search_format,
-                  id_=args.id)
+                  id_=args.Parcel)
 
     if not el.lot:
         logger.error('No lot found')
@@ -65,7 +65,7 @@ def main():
         logger.debug("posting")
         status = api.update_status(**update)
         try:
-            el.mark_as_tweeted(status.id)
+            el.mark_as_tweeted(status.id)  # this Id is the tweet ID, not the Parcel ID
         except AttributeError:
             el.mark_as_tweeted('1')
 
