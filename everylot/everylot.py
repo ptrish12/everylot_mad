@@ -48,8 +48,16 @@ class EveryLot(object):
         self.logger = kwargs.get('logger', logging.getLogger('everylot'))
 
         # set address format for fetching from DB
-        self.search_format = search_format or '{address}, Madison, WI'
-        self.print_format = print_format or '{address}'
+        self.search_format = search_format or '{Address}, Madison, WI'
+        self.print_format = print_format or '{Address}\n' \
+                                            'Neighborhood: {AreaName}\n' \
+                                            '\n' \
+                                            'Constructed: {MaxConstructionYear}\n' \
+                                            'Class: {PropertyClass}\n' \
+                                            'Type: {PropertyUse}\n' \
+                                            'Units: {TotalDwellingUnits}\n' \
+                                            'Tax Assessment: ${CurrentTotal}\n'
+
 
         self.logger.debug('searching google sv with %s', self.search_format)
         self.logger.debug('posting with %s', self.print_format)

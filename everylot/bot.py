@@ -48,7 +48,7 @@ def main():
         logger.error('No lot found')
         return
 
-    logger.debug('%s address: %s zip: %s', el.lot['Parcel'], el.lot.get('address'), el.lot.get('zip'))
+    logger.debug('%s address: %s', el.lot['Parcel'], el.lot.get('Address'))
     # logger.debug('db location %s,%s', el.lot['lat'], el.lot['lon'])
 
     # Get the streetview image and upload it
