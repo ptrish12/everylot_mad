@@ -16,6 +16,8 @@ Set up will be easier with at least a basic familiarity with the command line. A
 
 Creating a new Twitter account should be straightforward. To create a Twitter app, register at [developer.twitter.com/apps](http://developer.twitter.com/apps). Once you have an app, you'll need to register your account with the app. [Twitter has details](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) on that process.
 
+The Twitter developer dashboard calls the app keys "API key and secret" and the user keys "access token and secret".
+
 Once you have the keys, save them in a file called `bots.yaml` that looks like this:
 
 ```yaml
